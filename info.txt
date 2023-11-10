@@ -1,0 +1,10 @@
+
+versione C++ in https che dialoga con server NodeJS in https
+funziona. funziona anche la pagina web con indirizzo mio pc in loccioni 172.18.81.177
+da ipconfig.
+mettendo: https://172.18.81.177:44443/index.html 
+su un altro pc si vede la pagina
+
+
+client_01 sta all'interno di curl : D:\CURL
+client-web sta all'interno di D:\

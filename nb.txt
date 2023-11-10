@@ -1,0 +1,5 @@
+ho collegato la versione https loccioni con indirizzo sulla pagina web indirizzo ip del
+server quello esterno (trovato con ipsearc) manon funziona.
+inoltre sul server ho messo l'indirizzo di dove trovare la pagina quello
+di vercel.
+Vercel mi attiva la pagina correttamente ma non vedo i dati in streaming.
