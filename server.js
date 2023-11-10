@@ -72,7 +72,7 @@ app.get('/index.html', (req, res) => {
     res.sendFile(streamDatiPath);
 });
 
-// Configura le opzioni SSL/TLS
+// Configura le opzioni SSL/TLS_
 const options = {
     key: fs.readFileSync('key.pem'),   // Percorso al tuo file chiave privata
     cert: fs.readFileSync('cert.pem')   // Percorso al tuo file certificato pubblico
