@@ -8,3 +8,7 @@ su un altro pc si vede la pagina
 
 client_01 sta all'interno di curl : D:\CURL
 client-web sta all'interno di D:\
+
+per avviarlo : npm start
+
+metti su: D:\LOCCIONI\PROGETTI

@@ -3,14 +3,17 @@ const bodyParser = require('body-parser');
 const https = require('https');
 const fs = require('fs');
 const app = express();
-const PORT = 44443;
+const PORT = 4443;
 
 app.use(bodyParser.json());
 
 // Imposta il percorso assoluto per il file stream-dati.html sul tuo server
-//const streamDatiPath = '\\\\ANDBRU-NBT\\D$\\CLIENT-WEB\\index.html'; // Percorso al tuo file HTML (deve essere il percorso dove si trova la pagina compresa la pagina.) funzionante
-const streamDatiPath = 'https://client-web-odcm.vercel.app';
-//const streamDatiPath = 'https://192.168.43.68:44443/index.html';  //non sa dove è la pagina non funziona.
+const streamDatiPath = '\\\\ANDBRU-NBT\\D$\\CLIENT-WEB\\index.html'; // Percorso al tuo file HTML (deve essere il percorso dove si trova la pagina compresa la pagina.) funzionante
+//const streamDatiPath = 'https://127.0.0.1:4443/index.html'; 
+
+//const streamDatiPath = 'https://client-web-odcm.vercel.app'; //funzionante
+
+
 
 // Mantenere una lista dei client SSE connessi
 let clients = [];
@@ -45,7 +48,7 @@ app.post('/receive', (req, res) => {
         console.error('Errore durante l\'elaborazione della richiesta:', error);
         res.status(500).send({ errore: 'Si è verificato un errore durante l\'elaborazione della richiesta' });
     }
-});
+}); 
 
 // Endpoint SSE per il client web
 app.get('/index', (req, res) => {
@@ -75,15 +78,17 @@ app.get('/index.html', (req, res) => {
 // Configura le opzioni SSL/TLS_
 const options = {
     key: fs.readFileSync('key.pem'),   // Percorso al tuo file chiave privata
-    cert: fs.readFileSync('cert.pem')   // Percorso al tuo file certificato pubblico
+   cert: fs.readFileSync('cert.pem')   // Percorso al tuo file certificato pubblico
 };
+
 //
 // Crea un server HTTPS
 const server = https.createServer(options, app);
 
 // Modifica l'indirizzo IP e la porta per far ascoltare il server su un IP diverso   -- 192.168.43.68
-const indirizzoIPDelServer = '0.0.0.0'; // Puoi sostituire con l'indirizzo IP del tuo server (ci va l'indirizzo remoto ip esterno) funzionante 0.0.0.0 (li prende tut)
+//const indirizzoIPDelServer = '192.168.1.12'; // Puoi sostituire con l'indirizzo IP del tuo server (ci va l'indirizzo remoto ip esterno) funzionante 0.0.0.0 (li prende tut)  //ok
+const indirizzoIPDelServer = '127.0.0.1'; // Puoi sostituire con l'indirizzo IP del tuo server (ci va l'indirizzo remoto ip esterno) funzionante 0.0.0.0 (li prende tut)
+
 server.listen(PORT, indirizzoIPDelServer, () => {
     console.log(`Server in ascolto all'indirizzo ${indirizzoIPDelServer}:${PORT}`);
 });
-
